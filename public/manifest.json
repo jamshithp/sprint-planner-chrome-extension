@@ -1,0 +1,37 @@
+{
+  "manifest_version": 2,
+  "name": "Sprint Planner",
+  "description": "An extnesion for sprint planning and assiging the story points",
+  "version": "0.1",
+  "permissions": [
+    "storage"
+  ],
+  "background": {
+    "scripts": ["static/js/background.js"],
+    "persistent": false
+  },
+  "content_scripts": [{
+    "js": [ "static/js/content.js" ],
+    "matches": [
+      "https://stackoverflow.com/*", "https://*.stackoverflow.com/*",
+      "https://*.stackexchange.com/*"
+    ]
+  }],
+  "icons": {
+    "16":  "favicon-16.png",
+    "32":  "favicon-32.png",
+    "96":  "favicon-96.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "16":  "favicon-16.png",
+      "32":  "favicon-32.png"
+    },
+    "default_title": "Sprint Planner",
+    "default_popup": "popup.html"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  }
+}
