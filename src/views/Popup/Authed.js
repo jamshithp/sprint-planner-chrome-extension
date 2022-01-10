@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Container, Segment, Button, Checkbox, Header, Icon, Label, Placeholder
+  Container, Segment, Button, Checkbox, Header, Icon, Card, Placeholder
 } from 'semantic-ui-react';
 
 export default class Authed extends Component {
@@ -24,13 +24,13 @@ export default class Authed extends Component {
 
   render () {
     const { name, keywords, enabled, stats } = this.props;
+    const storyPoints = [0,1,2,3,5,8,13,21,34,'?'];
     return (
       <div>
 
         <Container textAlign='center'>
           <Button floated='left' circular icon='cog' onClick={this.onSettings} />
           <Button floated='right' circular icon='sign out' onClick={this.onLogout} />
-          <Checkbox toggle disabled={!keywords} defaultChecked={Boolean(enabled)} onChange={this.onCheck} />
         </Container>
 
         <Segment textAlign='center'>
@@ -45,13 +45,18 @@ export default class Authed extends Component {
           }
 
           {name &&
+          <>
           <Header as='h4'>
             <Icon name='user' />{name}
           </Header>
+          <Header as='h4'>
+            Vote your story point for AL-123
+          </Header>
+          </>
           }
-          <Label color='red' tag>
-            <Label.Detail>Story No:AL-234</Label.Detail>
-          </Label>
+          <Card.Group itemsPerRow={5}>
+            {storyPoints.map(point => <Card className="card">{point}</Card>)}
+          </Card.Group>
         </Segment>
 
       </div>

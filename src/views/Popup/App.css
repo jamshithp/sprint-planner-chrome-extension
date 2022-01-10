@@ -17,3 +17,7 @@ body {
 .App-view {
   margin: 1em;
 }
+
+.card {
+  height:60px;
+}
